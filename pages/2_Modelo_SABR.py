@@ -237,7 +237,8 @@ with tab3:
         """)
 
         st.info("**Con β = 1** (nuestra elección): los términos en (1−β) se anulan y σ_ATM = α{1 + [ραν/4 + (2−3ρ²)/24·ν²]·tex}")
-
+        st.image("images/beta.png")
+    
     with col2:
         st.markdown("### Flujo de uso en la práctica")
         steps = [
