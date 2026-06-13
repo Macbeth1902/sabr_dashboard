@@ -1,5 +1,6 @@
 """
 pages/4_Calibracion_SABR.py — Calibración SABR y superficie de volatilidad
+
 """
 import streamlit as st
 import numpy as np
@@ -87,7 +88,8 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 
 # ── Tab 1: Heatmap VCUB ────────────────────────────────────────────────────
 with tab1:
-    st.plotly_chart(fig_vcub_heatmap(), use_container_width=True)
+    st.image("E:/UNIVERSIDAD/Seminario Derivados/sabr_dashboard/images/WhatsApp Image 2026-06-12 at 10.18.31 PM.jpeg", width="stretch")
+    # st.plotly_chart(fig_vcub_heatmap(), use_container_width=True)
 
     st.markdown("""
     <div style='display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;'>
@@ -165,35 +167,37 @@ with tab2:
     """, unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.plotly_chart(fig_calibration_params(calib), use_container_width=True)
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("""
-        <div class='warning-box'>
-            <strong style='color:#F59E0B;'>Tramo corto (1Mo–9Mo)</strong><br>
-            <span style='color:#94A3B8; font-size:0.83rem;'>
-            ν > 1 y RMSE de 27–30 pb. La sonrisa observada es muy pronunciada,
-            posiblemente afectada por iliquidez. Estos nodos son los menos estables.
-            </span>
-        </div>
-        """, unsafe_allow_html=True)
-    with col2:
-        st.markdown("""
-        <div class='result-highlight'>
-            <strong style='color:#14B8A6;'>Tramo medio-largo (1Yr–30Yr)</strong><br>
-            <span style='color:#94A3B8; font-size:0.83rem;'>
-            ρ ∈ [0.32, 0.37], ν ≈ 0.50–0.52 y RMSE de 6–8 pb.
-            La estabilidad de los parámetros permite interpolar linealmente
-            sin re-optimización para tenores intermedios.
-            </span>
-        </div>
-        """, unsafe_allow_html=True)
+    # st.plotly_chart(fig_calibration_params(calib), use_container_width=True)
+    
+    # col1, col2 = st.columns(2)
+    # with col1:
+    #     st.markdown("""
+    #     <div class='warning-box'>
+    #         <strong style='color:#F59E0B;'>Tramo corto (1Mo–9Mo)</strong><br>
+    #         <span style='color:#94A3B8; font-size:0.83rem;'>
+    #         ν > 1 y RMSE de 27–30 pb. La sonrisa observada es muy pronunciada,
+    #         posiblemente afectada por iliquidez. Estos nodos son los menos estables.
+    #         </span>
+    #     </div>
+    #     """, unsafe_allow_html=True)
+    # with col2:
+    #     st.markdown("""
+    #     <div class='result-highlight'>
+    #         <strong style='color:#14B8A6;'>Tramo medio-largo (1Yr–30Yr)</strong><br>
+    #         <span style='color:#94A3B8; font-size:0.83rem;'>
+    #         ρ ∈ [0.32, 0.37], ν ≈ 0.50–0.52 y RMSE de 6–8 pb.
+    #         La estabilidad de los parámetros permite interpolar linealmente
+    #         sin re-optimización para tenores intermedios.
+    #         </span>
+    #     </div>
+    #     """, unsafe_allow_html=True)
 
 
 # ── Tab 3: Superficie 3D ───────────────────────────────────────────────────
 with tab3:
-    st.plotly_chart(fig_sabr_surface(calib), use_container_width=True)
+    st.image("E:/UNIVERSIDAD/Seminario Derivados/sabr_dashboard/images/Captura de pantalla 2026-06-13 005629.png", width=800)
+    # st.plotly_chart(fig_sabr_surface(calib), use_container_width=True)
 
     st.markdown("""
     <div style='background:#131929; border:1px solid #1E2D45; border-radius:10px;
