@@ -1,6 +1,8 @@
 """
 core/charts.py — Todas las gráficas Plotly del proyecto
+
 """
+
 import numpy as np
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -247,28 +249,26 @@ def fig_sabr_surface(calib: dict) -> go.Figure:
     )
     return fig
 
-
 def fig_calibration_params(calib: dict) -> go.Figure:
     """Evolución de los parámetros SABR calibrados a lo largo de los tenores."""
     from core.data import TENOR_LBL_SW, TENOR_Y_SW
 
     tenors = TENOR_Y_SW
-    alphas = [calib[l]["alpha"] for l in TENOR_LBL_SW]
-    rhos   = [calib[l]["rho"]   for l in TENOR_LBL_SW]
-    nus    = [calib[l]["nu"]    for l in TENOR_LBL_SW]
+    #alphas = [calib[l]["alpha"] for l in TENOR_LBL_SW]
+    #rhos   = [calib[l]["rho"]   for l in TENOR_LBL_SW]
+    #nus    = [calib[l]["nu"]    for l in TENOR_LBL_SW]
     rmses  = [calib[l]["rmse"] * 1e4 for l in TENOR_LBL_SW]
 
     fig = make_subplots(
         rows=2, cols=2,
-        subplot_titles=["α (nivel)", "ρ (skew)", "ν (curvatura)", "RMSE (pb)"],
+        subplot_titles=["RMSE (pb)"],
         vertical_spacing=0.18,
         horizontal_spacing=0.12,
     )
 
-    pairs = [(alphas, C_TEAL, 1, 1), (rhos, C_AMBER, 1, 2),
-             (nus,   C_BLUE,  2, 1), (rmses, C_ROSE,  2, 2)]
+    pairs = [(rmses, C_ROSE,  2, 2)]
 
-    names = ["α", "ρ", "ν", "RMSE (pb)"]
+    names = ["RMSE (pb)"]
     for (vals, col, r, c_), nm in zip(pairs, names):
         fig.add_trace(go.Scatter(
             x=tenors, y=vals,
@@ -282,11 +282,52 @@ def fig_calibration_params(calib: dict) -> go.Figure:
         **LAYOUT_BASE,
         height=480,
         showlegend=False,
-        title_text="Parámetros SABR calibrados por tenor (tex = 1A)",
+        title_text="Parámetro RMSE (pb) calibrado por tenor (tex = 1A)",
     )
     fig.update_xaxes(title_text="Tenor (años)", gridcolor=C_BORDER)
     fig.update_yaxes(gridcolor=C_BORDER)
     return fig
+
+
+# def fig_calibration_params(calib: dict) -> go.Figure:
+#     """Evolución de los parámetros SABR calibrados a lo largo de los tenores."""
+#     from core.data import TENOR_LBL_SW, TENOR_Y_SW
+
+#     tenors = TENOR_Y_SW
+#     alphas = [calib[l]["alpha"] for l in TENOR_LBL_SW]
+#     rhos   = [calib[l]["rho"]   for l in TENOR_LBL_SW]
+#     nus    = [calib[l]["nu"]    for l in TENOR_LBL_SW]
+#     rmses  = [calib[l]["rmse"] * 1e4 for l in TENOR_LBL_SW]
+
+#     fig = make_subplots(
+#         rows=2, cols=2,
+#         subplot_titles=["α (nivel)", "ρ (skew)", "ν (curvatura)", "RMSE (pb)"],
+#         vertical_spacing=0.18,
+#         horizontal_spacing=0.12,
+#     )
+
+#     pairs = [(alphas, C_TEAL, 1, 1), (rhos, C_AMBER, 1, 2),
+#              (nus,   C_BLUE,  2, 1), (rmses, C_ROSE,  2, 2)]
+
+#     names = ["α", "ρ", "ν", "RMSE (pb)"]
+#     for (vals, col, r, c_), nm in zip(pairs, names):
+#         fig.add_trace(go.Scatter(
+#             x=tenors, y=vals,
+#             mode="lines+markers",
+#             line=dict(color=col, width=2),
+#             marker=dict(size=6),
+#             name=nm,
+#         ), row=r, col=c_)
+
+#     fig.update_layout(
+#         **LAYOUT_BASE,
+#         height=480,
+#         showlegend=False,
+#         title_text="Parámetros SABR calibrados por tenor (tex = 1A)",
+#     )
+#     fig.update_xaxes(title_text="Tenor (años)", gridcolor=C_BORDER)
+#     fig.update_yaxes(gridcolor=C_BORDER)
+#     return fig
 
 
 def fig_vcub_heatmap() -> go.Figure:
