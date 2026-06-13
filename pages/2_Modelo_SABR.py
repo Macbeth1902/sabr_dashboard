@@ -236,8 +236,8 @@ with tab3:
         + \frac{2-3\rho^2}{24}\nu^2\right]t_{ex}\right\}
         """)
 
-        st.info("**Con β = 1** (nuestra elección): los términos en (1−β) se anulan y σ_ATM = α{1 + [ραν/4 + (2−3ρ²)/24·ν²]·tex}")
-        st.image("images/beta.png")
+        st.info("**Con β = 1** (nuestra elección): los términos en (1−β) se anulan y:")
+        st.image("images/beta.png", width="stretch")
     
     with col2:
         st.markdown("### Flujo de uso en la práctica")
