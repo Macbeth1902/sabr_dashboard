@@ -88,7 +88,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 
 # ── Tab 1: Heatmap VCUB ────────────────────────────────────────────────────
 with tab1:
-    st.image("E:/UNIVERSIDAD/Seminario Derivados/sabr_dashboard/images/WhatsApp Image 2026-06-12 at 10.18.31 PM.jpeg", width="stretch")
+    st.image("images/bloomberg.jpeg", width="stretch")
     # st.plotly_chart(fig_vcub_heatmap(), use_container_width=True)
 
     st.markdown("""
@@ -196,7 +196,7 @@ with tab2:
 
 # ── Tab 3: Superficie 3D ───────────────────────────────────────────────────
 with tab3:
-    st.image("E:/UNIVERSIDAD/Seminario Derivados/sabr_dashboard/images/Captura de pantalla 2026-06-13 005629.png", width=800)
+    st.image("images/sabr.png", width=800)
     # st.plotly_chart(fig_sabr_surface(calib), use_container_width=True)
 
     st.markdown("""
