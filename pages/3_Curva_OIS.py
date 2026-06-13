@@ -171,9 +171,7 @@ with tab2:
     })
     st.dataframe(
         df_rep.style
-              .format({"Tasa par (%)": "{:.2f}", "DF": "{:.6f}", "Tasa cero (%)": "{:.4f}"})
-              .background_gradient(subset=["DF"], cmap="Blues_r")
-              .background_gradient(subset=["Tasa cero (%)"], cmap="YlOrRd"),
+              .format({"Tasa par (%)": "{:.2f}", "DF": "{:.6f}", "Tasa cero (%)": "{:.4f}"}),
         use_container_width=True,
         hide_index=True,
     )
